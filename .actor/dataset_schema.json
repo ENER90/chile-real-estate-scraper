@@ -1,0 +1,163 @@
+{
+  "actorSpecification": 1,
+  "fields": {},
+  "views": {
+    "overview": {
+      "title": "Listings",
+      "transformation": {
+        "fields": [
+          "source",
+          "title",
+          "price",
+          "currency",
+          "priceUF",
+          "priceCLP",
+          "pricePerM2UF",
+          "m2Util",
+          "m2Total",
+          "bedrooms",
+          "bathrooms",
+          "parking",
+          "comuna",
+          "publisher",
+          "publishedAt",
+          "url"
+        ]
+      },
+      "display": {
+        "component": "table",
+        "properties": {
+          "source": {
+            "label": "Source"
+          },
+          "title": {
+            "label": "Title"
+          },
+          "price": {
+            "label": "Price",
+            "format": "number"
+          },
+          "currency": {
+            "label": "Cur."
+          },
+          "priceUF": {
+            "label": "UF",
+            "format": "number"
+          },
+          "priceCLP": {
+            "label": "CLP",
+            "format": "number"
+          },
+          "pricePerM2UF": {
+            "label": "UF/m\u00b2",
+            "format": "number"
+          },
+          "m2Util": {
+            "label": "m\u00b2 \u00fatiles",
+            "format": "number"
+          },
+          "m2Total": {
+            "label": "m\u00b2 totales",
+            "format": "number"
+          },
+          "bedrooms": {
+            "label": "Dorm.",
+            "format": "number"
+          },
+          "bathrooms": {
+            "label": "Ba\u00f1os",
+            "format": "number"
+          },
+          "parking": {
+            "label": "Estac.",
+            "format": "number"
+          },
+          "comuna": {
+            "label": "Comuna"
+          },
+          "publisher": {
+            "label": "Publisher"
+          },
+          "publishedAt": {
+            "label": "Published",
+            "format": "date"
+          },
+          "url": {
+            "label": "URL",
+            "format": "link"
+          }
+        }
+      }
+    },
+    "map": {
+      "title": "Location",
+      "transformation": {
+        "fields": [
+          "title",
+          "comuna",
+          "address",
+          "lat",
+          "lon",
+          "priceUF",
+          "url"
+        ]
+      },
+      "display": {
+        "component": "table",
+        "properties": {
+          "title": {
+            "label": "Title"
+          },
+          "comuna": {
+            "label": "Comuna"
+          },
+          "address": {
+            "label": "Address"
+          },
+          "lat": {
+            "label": "Lat",
+            "format": "number"
+          },
+          "lon": {
+            "label": "Lon",
+            "format": "number"
+          },
+          "priceUF": {
+            "label": "UF",
+            "format": "number"
+          },
+          "url": {
+            "label": "URL",
+            "format": "link"
+          }
+        }
+      }
+    },
+    "images": {
+      "title": "Photos",
+      "transformation": {
+        "fields": [
+          "title",
+          "images",
+          "url"
+        ]
+      },
+      "display": {
+        "component": "table",
+        "properties": {
+          "title": {
+            "label": "Title"
+          },
+          "images": {
+            "label": "Photos",
+            "format": "array"
+          },
+          "url": {
+            "label": "URL",
+            "format": "link"
+          }
+        }
+      }
+    }
+  }
+}

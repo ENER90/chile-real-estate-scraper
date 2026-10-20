@@ -1,0 +1,23 @@
+{
+  "title": "Chile Real Estate Scraper",
+  "type": "object",
+  "schemaVersion": 1,
+  "properties": {
+    "comunas": { "title": "Comunas", "type": "array", "editor": "stringList", "description": "Chilean comunas to search, e.g. Providencia, Las Condes, Ñuñoa, Santiago. Accents and capitals are optional.", "prefill": ["Providencia", "Ñuñoa"] },
+    "region": { "title": "Region", "type": "string", "editor": "select", "default": "metropolitana", "description": "Region the comunas belong to.",
+      "enum": ["metropolitana", "valparaiso", "biobio", "coquimbo", "antofagasta", "ohiggins", "maule", "la-araucania", "los-lagos", "los-rios", "tarapaca", "atacama", "arica-y-parinacota", "nuble", "aysen", "magallanes"],
+      "enumTitles": ["Metropolitana (Santiago)", "Valparaíso", "Biobío", "Coquimbo", "Antofagasta", "O'Higgins", "Maule", "La Araucanía", "Los Lagos", "Los Ríos", "Tarapacá", "Atacama", "Arica y Parinacota", "Ñuble", "Aysén", "Magallanes"] },
+    "operation": { "title": "Operation", "type": "string", "editor": "select", "default": "venta", "enum": ["venta", "arriendo"], "enumTitles": ["Venta (for sale)", "Arriendo (for rent)"], "description": "Sale or rent." },
+    "propertyType": { "title": "Property type", "type": "string", "editor": "select", "default": "departamento", "enum": ["departamento", "casa", "oficina", "terreno", "local-comercial", "bodega", "estacionamiento", "parcela"], "enumTitles": ["Departamento", "Casa", "Oficina", "Terreno", "Local comercial", "Bodega", "Estacionamiento", "Parcela"], "description": "Type of property. TocToc supports departamento, casa, oficina and terreno." },
+    "sources": { "title": "Sources", "type": "array", "editor": "select", "default": ["portalinmobiliario"], "items": { "type": "string", "enum": ["portalinmobiliario", "toctoc"], "enumTitles": ["Portal Inmobiliario", "TocToc"] }, "description": "Portals to scrape. Results are deduplicated per portal, not across portals." },
+    "minPrice": { "title": "Min price", "type": "integer", "minimum": 0, "description": "Minimum price in the currency below." },
+    "maxPrice": { "title": "Max price", "type": "integer", "minimum": 0, "description": "Maximum price in the currency below." },
+    "priceCurrency": { "title": "Price currency", "type": "string", "editor": "select", "enum": ["UF", "CLP"], "description": "Currency of min/max price. Default: UF for venta, CLP for arriendo. Listings in the other currency are converted with today's UF value." },
+    "maxItems": { "title": "Max results", "type": "integer", "minimum": 1, "default": 100, "prefill": 20, "description": "Maximum listings for the whole run (you pay per result)." },
+    "maxItemsPerComuna": { "title": "Max results per comuna", "type": "integer", "minimum": 0, "default": 0, "description": "Spread results across comunas. 0 = no limit." },
+    "includeNewProjects": { "title": "Include new projects (proyectos)", "type": "boolean", "default": true, "description": "New developments show a 'Desde' (from) price and ranges of m², bedrooms and bathrooms." },
+    "includeDetails": { "title": "Open listing pages (Portal Inmobiliario)", "type": "boolean", "default": true, "description": "Adds total m², parking, coordinates, publish date, publisher and all photos. Slower; turn off for fast price-only runs." },
+    "proxyConfiguration": { "title": "Proxy", "type": "object", "editor": "proxy", "sectionCaption": "Advanced", "default": { "useApifyProxy": true, "apifyProxyGroups": ["RESIDENTIAL"], "apifyProxyCountry": "CL" }, "prefill": { "useApifyProxy": true, "apifyProxyGroups": ["RESIDENTIAL"], "apifyProxyCountry": "CL" }, "description": "Chilean residential proxy is recommended: the portals block datacenter IPs." }
+  },
+  "required": ["comunas"]
+}
