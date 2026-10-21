@@ -1,8 +1,8 @@
 {
   "actorSpecification": 1,
   "name": "chile-real-estate-scraper",
-  "title": "Chile Real Estate Scraper \u2013 Portal Inmobiliario & TocToc",
-  "description": "Scrape Chilean property listings (departamentos, casas, oficinas) for sale or rent from Portal Inmobiliario and TocToc: price in UF and CLP, price per m\u00b2, m\u00b2, dormitorios, ba\u00f1os, estacionamientos, comuna, coordinates, publisher and photos. Santiago and all of Chile.",
+  "title": "Chile Real Estate Scraper – Propiedades Portal Inmobiliario & TocToc",
+  "description": "Extrae propiedades en venta y arriendo en Chile desde Portal Inmobiliario y TocToc: departamentos y casas en Santiago, precio en UF y CLP, precio por m², dormitorios, baños, comuna y coordenadas. Chile real estate scraper & property listings data.",
   "version": "0.1",
   "buildTag": "latest",
   "input": "./input_schema.json",
