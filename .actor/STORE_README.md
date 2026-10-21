@@ -2,6 +2,10 @@
 
 Saca departamentos, casas, oficinas y terrenos en venta o arriendo de Portal Inmobiliario y TocToc, por comuna, con el precio en UF y en pesos, el precio por m², dormitorios, baños, superficie y coordenadas. Lo uso para comparar comunas sin abrir aviso por aviso.
 
+Si prefieres verlo funcionando antes de probarlo, grabé un tutorial corto en video:
+
+https://www.youtube.com/watch?v=e1ULlFXrIeM
+
 ![Formulario con comunas de Santiago](https://raw.githubusercontent.com/ENER90/chile-real-estate-scraper/main/docs/screenshots/01-input.png)
 
 ## Qué datos obtienes
