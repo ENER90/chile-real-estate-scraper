@@ -1,21 +1,17 @@
 # Chile Real Estate Scraper – Portal Inmobiliario & TocToc (Propiedades, Arriendo y Venta)
 
-🇪🇸 **Español** · 🇬🇧 [English](#english)
+Saca avisos de departamentos, casas, oficinas y terrenos en venta y arriendo desde Portal Inmobiliario y TocToc, para cualquier comuna de Santiago o del resto de Chile. Lo uso para comparar precios por comuna: cada fila trae el precio en UF y en pesos, el precio por m², m² útiles y totales, dormitorios, baños, estacionamientos, dirección, coordenadas, quién publica y fotos. No pide login ni API key.
 
-Extrae **avisos de propiedades en Chile** — *departamentos, casas, oficinas, terrenos* **en venta y arriendo** — desde **Portal Inmobiliario** (Mercado Libre) y **TocToc**, para cualquier comuna de **Santiago** y del resto de **Chile**. Cada fila trae el precio en **UF y CLP**, el **precio por m² (UF/m² y $/m²)**, m² útiles y totales, dormitorios, baños, estacionamientos, comuna, dirección, **coordenadas**, quién publica (corredora, inmobiliaria o particular), fecha de publicación y fotos.
-
-Sin login ni API key: solo páginas públicas de avisos.
-
-## ✨ Por qué este scraper
+## Qué tiene de distinto
 
 - **Dos portales, un solo formato.** Las filas de Portal Inmobiliario y TocToc tienen los mismos campos, así que puedes compararlas o juntarlas.
 - **UF y CLP en cada fila.** Los precios se convierten con el valor oficial de la UF del día (mindicador.cl), para que los *arriendos* (CLP) y las *ventas* (UF) sean comparables.
-- **Precio por m² ya calculado**, el dato que de verdad usan corredores, tasadores e inversionistas.
+- **Precio por m² ya calculado**, que es lo que uno mira al comparar.
 - **Proyectos nuevos marcados.** `isNewProject` + `pricePrefix: "Desde"` + rangos (`m2UtilMax`, `bedroomsMax`), para que los precios "desde" no ensucien tus promedios. Desactívalos con `includeNewProjects: false`.
 - **Filtro de precio en el servidor** de Portal Inmobiliario (`minPrice`/`maxPrice` en UF o CLP).
 - **Proxy residencial chileno por defecto**, reintentos y resultados parciales: si falla una comuna, no se cae toda la ejecución.
 
-## 🎯 Casos de uso
+## Casos de uso
 
 - Referencias de precios de arriendo y venta por comuna (*precio por m² en Providencia, Ñuñoa, Las Condes…*).
 - Evaluación de inversiones: rentabilidad (cap rate) comparando UF/m² de `arriendo` y `venta` en la misma comuna.
@@ -23,7 +19,7 @@ Sin login ni API key: solo páginas públicas de avisos.
 - Monitoreo diario o semanal del mercado con **Schedules** de Apify → Google Sheets, Slack o un webhook.
 - Alimentar agentes de IA con el [servidor Apify MCP](https://mcp.apify.com).
 
-## 📥 Entrada
+## Entrada
 
 | Campo | Tipo | Descripción | Ejemplo |
 |---|---|---|---|
@@ -53,7 +49,7 @@ Sin login ni API key: solo páginas públicas de avisos.
 }
 ```
 
-## 📤 Salida
+## Salida
 
 Un registro por aviso (vistas del dataset: **Listings**, **Location**, **Photos**). El resumen por comuna queda en el registro `OUTPUT`.
 
@@ -101,7 +97,7 @@ Un registro por aviso (vistas del dataset: **Listings**, **Location**, **Photos*
 | `publisherType` | `corredora`, `inmobiliaria` o `particular` (aproximado). |
 | `publishedAt` | Fecha aproximada a partir de "Publicado hace…" (Portal Inmobiliario) o de las horas publicadas (TocToc). |
 
-## 🧭 Comparación de fuentes
+## Comparación de fuentes
 
 | | Portal Inmobiliario | TocToc |
 |---|---|---|
@@ -111,7 +107,7 @@ Un registro por aviso (vistas del dataset: **Listings**, **Location**, **Photos*
 | Estacionamientos / m² totales | Con `includeDetails` | No aparecen en las páginas de búsqueda |
 | Velocidad | ~5–10 s por aviso con detalles, rápido sin ellos | Muy rápido (una página por comuna) |
 
-## ❓ Preguntas frecuentes
+## Preguntas frecuentes
 
 - **¿Es legal?** Recopila datos públicos de avisos desde páginas de búsqueda permitidas por el robots.txt de cada sitio, a un ritmo moderado. No lo uses para recopilar datos personales ni para republicar fotos sin permiso.
 - **¿Por qué hay precios "Desde"?** Los proyectos nuevos publican un precio inicial; revisa `isNewProject`.
@@ -121,24 +117,22 @@ Un registro por aviso (vistas del dataset: **Listings**, **Location**, **Photos*
 
 **Palabras clave:** arriendo departamentos Santiago, venta de casas Chile, precio UF por m², propiedades en venta, departamentos en arriendo Providencia, Ñuñoa, Las Condes, scraper Portal Inmobiliario, scraper TocToc, corredoras de propiedades, datos inmobiliarios Chile.
 
----
-
-## English
+In English:
 
 Scrape **Chilean property listings** — *departamentos, casas, oficinas, terrenos* **en venta y arriendo** — from **Portal Inmobiliario** (Mercado Libre) and **TocToc**, for any comuna of **Santiago** and the rest of **Chile**. Every row comes with the price in **UF and CLP**, the **price per m² (UF/m², $/m²)**, m² útiles / totales, dormitorios, baños, estacionamientos, comuna, address, **coordinates**, publisher (corredora / inmobiliaria / particular), publish date and photos.
 
 No login, no API key: public listing pages only.
 
-### ✨ Why this scraper
+### What makes it different
 
 - **Two portals, one schema.** Portal Inmobiliario and TocToc rows share the same fields, so you can compare or merge them.
 - **UF and CLP on every row.** Prices are converted with today's official UF value (mindicador.cl), so *arriendo* (CLP) and *venta* (UF) are comparable.
-- **Price per m² computed for you** — the number brokers, appraisers and investors actually need.
+- **Price per m² computed for you**.
 - **New projects flagged.** `isNewProject` + `pricePrefix: "Desde"` + ranges (`m2UtilMax`, `bedroomsMax`) so “from” prices don't pollute your averages. Turn them off with `includeNewProjects: false`.
 - **Server-side price filter** on Portal Inmobiliario (`minPrice`/`maxPrice` in UF or CLP).
 - **Chilean residential proxy by default**, retries and partial results: one failing comuna does not kill the run.
 
-### 🎯 Use cases
+### Use cases
 
 - Rent and sale price benchmarks by comuna (*precio por m² Providencia, Ñuñoa, Las Condes…*).
 - Investment screening: cap rates using `arriendo` vs `venta` UF/m² in the same comuna.
@@ -146,7 +140,7 @@ No login, no API key: public listing pages only.
 - Daily / weekly market monitoring with Apify **Schedules** → Google Sheets, Slack or a webhook.
 - Feeding AI agents via the [Apify MCP server](https://mcp.apify.com).
 
-### 📥 Input
+### Input
 
 | Field | Type | Description | Example |
 |---|---|---|---|
@@ -176,7 +170,7 @@ No login, no API key: public listing pages only.
 }
 ```
 
-### 📤 Output
+### Output
 
 One item per listing (dataset views: **Listings**, **Location**, **Photos**). Run summary per comuna in the `OUTPUT` record.
 
@@ -224,7 +218,7 @@ One item per listing (dataset views: **Listings**, **Location**, **Photos**). Ru
 | `publisherType` | `corredora`, `inmobiliaria` or `particular` (best effort). |
 | `publishedAt` | Approximate date derived from “Publicado hace…” (Portal Inmobiliario) or hours online (TocToc). |
 
-### 🧭 Sources compared
+### Sources compared
 
 | | Portal Inmobiliario | TocToc |
 |---|---|---|
@@ -234,7 +228,7 @@ One item per listing (dataset views: **Listings**, **Location**, **Photos**). Ru
 | Parking / m² totales | With `includeDetails` | Not on search pages |
 | Speed | ~5–10 s per listing with details, fast without | Very fast (one page per comuna) |
 
-### ❓ FAQ
+### FAQ
 
 - **Is it legal?** It collects publicly visible listing data from search pages allowed by each site's robots.txt, at a gentle pace. Don't use it to collect personal data or to republish photos without permission.
 - **Why “Desde” prices?** New developments advertise a starting price; check `isNewProject`.
